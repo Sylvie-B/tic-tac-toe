@@ -5,9 +5,51 @@
 }
 
 html {
-    /*font-size: 62.5%;*/
+    font-size: 62.5%;
+    font-family: sans-serif;
+    color: white;
 }
 
 body {
     width: 100%;
+}
+
+div, header {
+    margin: 0.5vh auto 0.5vh auto;
+    padding: 0.5vw;
+    /*border: gray 1px dashed;*/
+}
+
+#container, header, #player, #round, #ticTacToe, #start {
+    width: 80%;
+    text-align: center;
+}
+
+#container{
+    padding: 2vw;
+    background-image: url("fond-sakura.jpg");
+    background-size: cover;
+}
+
+header, #player, #round, #start {
+    font-size: 3vw;
+}
+
+header div, #player div, #round div, #start{
+    background-color: #ff5252;
+}
+
+#player{
+    display: flex;
+    justify-content: space-between;
+}
+
+#ligne1, #ligne2, #ligne3{
+    display: flex;
+}
+
+.case1, .case2, .case3 {
+    width: 30%;
+    height: 15vh;
+    background-color: #ff5252;
 }
