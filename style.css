@@ -65,6 +65,7 @@ header div, #player div, #round div, #restart div{
     width: 30%;
     height: 10vh;
     background-color: #ff5252;
+    font-size: 3vw;
 }
 
 a{
