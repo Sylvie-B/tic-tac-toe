@@ -6,45 +6,50 @@ board.addEventListener("contextmenu", function (event){
 
 
 let square = board.getElementsByTagName("div");
-let playerX = 0;
-let playerO = 2;
+const playerX = 0;
+const playerO = 2;
 let turn = playerX;
 let info = document.getElementById("info");
+let score1 = "";
+let score2 = "";
+let pNum = document.getElementsByClassName("pNum");
+console.log(pNum.length);
 
+//
+// function isThereAWinner (){
+//     for (let x = 0 ; x < pNum.length ; x++){
+//         /** conditions */
+//         ("0"&&"1"&&"2" || "3"&&"4"&&"5" || "6"&&"7"&&"8" ||"0"&&"3"&&"6" || "1"&&"4"&&"7" || "2"&&"5"&&"8" || "0"&&"4"&&"8" || "6"&&"4"&&"2"))
+//     info.innerHTML = "Le joueur " + (x+1) + " gagne";
+//     }
+// }
+//
 
-
-let cross = document.createElement("img");          // create img player 1
-cross.style.width = "9vw";
-cross.style.height = "9vh";
-cross.src = "croix.png";
-
-
-let round = document.createElement("img");          // create img player 2
-round.style.width = "9vw";
-round.style.height = "9vh";
-round.src = "buttonGreen.png";
 
 
 
 for (let i = 0; i < square.length; i++){
     square[i].addEventListener("mouseup", function (event){
-        console.log(event.button);
         let ref = square[i].innerHTML;
-        console.log(ref);
-
         switch (event.button){
             case 0:
                 if((turn === playerX) && (ref === "")){
-                    square[i].innerHTML = "<img src=\'croix.png\'>";
+                    square[i].innerHTML = "<img alt='X' src=\'croix.png\'>";
                     info.innerHTML = "Joueur 2";
                     turn = playerO;
+                    let nbr1 = i.toString();
+                    score1 += nbr1;
+                    console.log(typeof score1);
                 }
                 break;
             case 2:
                 if (turn === playerO && ref === ""){
-                    square[i].innerHTML = "<img src=\'buttonGreen.png\'>";
+                    square[i].innerHTML = "<img alt='O' src=\'buttonGreen.png\'>";
                     info.innerHTML = "Joueur 1";
                     turn = playerX;
+                    let nbr2 = i.toString();
+                    score2 += nbr2;
+                    console.log("score2 = " + score2);
                 }
                 console.log(turn);
                 break;
