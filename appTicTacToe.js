@@ -12,8 +12,6 @@ const playerO = 2;
 let turn = playerX;
 let info = document.getElementById("info");
 
-let pNum = document.getElementsByClassName("pNum");
-
 for (let square of board){
     square.addEventListener("mouseup", function (event){
 
@@ -24,7 +22,6 @@ for (let square of board){
                     turn = playerO;
                     info.innerHTML = "Joueur 2";
                 }
-
                 break;
             case 2:
                 if (turn === event.button){
@@ -46,3 +43,12 @@ function isItEmpty (element, char){
 function isThereAWinner (){
 
 }
+
+// listener sur restart
+document.getElementById("restart").addEventListener('click', function (){
+    for (let square of board){
+        square.innerHTML = "";
+    }
+    turn = playerX;
+});
+

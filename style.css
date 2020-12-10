@@ -22,7 +22,7 @@ div, header, footer {
     width: 50%;
 }
 
-header, #player, #round, #ticTacToe, #restart, footer{
+header, #player, #round, #ticTacToe, #title, footer{
     width: 70%;
     text-align: center;
 }
@@ -33,7 +33,7 @@ header, #player, #round, #ticTacToe, #restart, footer{
     background-size: cover;
 }
 
-header, footer{
+#title, footer{
     font-size: 3vw;
     font-weight: bold;
 }
@@ -42,7 +42,7 @@ header, footer{
     font-size: 2vw;
 }
 
-#title, #player div, #info, footer div{
+#title, #player div, #info, #restart{
     background-color: #ff5252;
     border-radius: 5px;
 }
@@ -52,19 +52,15 @@ header, footer{
     justify-content: space-between;
 }
 
-#imgP1, #imgP2{
-    width: 7vw;
-    height: auto;
-}
-
-#ticTacToe{
+#ticTacToe {
     display: flex;
     flex-wrap: wrap;
 }
 
-#ticTacToe div{
+.case{
     width: 30%;
-    height: 10vh;
+    height: 13vh;
     background-color: #ff5252;
     font-size: 3vw;
 }
+
