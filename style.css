@@ -15,14 +15,14 @@ body {
 }
 
 div, header, footer {
-    margin: 0.5vh auto 0.5vh auto;
+    margin: 0.5vh auto;
 }
 
 #container{
     width: 50%;
 }
 
-header, #player, #round, #ticTacToe, footer, #restart{
+header, #player, #round, #ticTacToe, #restart, footer{
     width: 70%;
     text-align: center;
 }
@@ -33,7 +33,7 @@ header, #player, #round, #ticTacToe, footer, #restart{
     background-size: cover;
 }
 
-header{
+header, footer{
     font-size: 3vw;
     font-weight: bold;
 }
@@ -42,8 +42,9 @@ header{
     font-size: 2vw;
 }
 
-header div, #player div, #round div, #restart div{
+#title, #player div, #info, footer div{
     background-color: #ff5252;
+    border-radius: 5px;
 }
 
 #player{
@@ -66,9 +67,4 @@ header div, #player div, #round div, #restart div{
     height: 10vh;
     background-color: #ff5252;
     font-size: 3vw;
-}
-
-a{
-    text-decoration-line: none;
-    color: white;
 }
