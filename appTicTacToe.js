@@ -37,8 +37,8 @@ for (let i = 0; i < square.length; i++){
                     square[i].innerHTML = "<img alt='X' src=\'croix.png\'>";
                     info.innerHTML = "Joueur 2";
                     turn = playerO;
-                    // let nbr1 = i.toString();
-                    score1 += square[i];
+                    let nbr1 = i.toString();
+                    score1 += ;
                     console.log(typeof score1);
                 }
                 break;
@@ -47,7 +47,7 @@ for (let i = 0; i < square.length; i++){
                     square[i].innerHTML = "<img alt='O' src=\'buttonGreen.png\'>";
                     info.innerHTML = "Joueur 1";
                     turn = playerX;
-                    // let nbr2 = i.toString();
+                    let nbr2 = i.toString();
                     score2 += nbr2;
                     console.log("score2 = " + score2);
                 }
