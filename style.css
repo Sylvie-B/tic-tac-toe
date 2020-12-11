@@ -42,6 +42,12 @@ header, #player, #round, #ticTacToe, #title, footer{
     font-size: 2vw;
 }
 
+.compt{
+    width: 49%;
+    display: flex;
+    justify-content: space-between;
+}
+
 #title, #player div, #info, #restart{
     background-color: #ff5252;
     border-radius: 5px;
