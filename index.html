@@ -8,25 +8,21 @@
 <body>
     <div id="container">
         <div id="title">
-            <span>Tic Tac Toe</span>
+            <div>Tic Tac Toe</div>
         </div>
         <div id="playerFrame">
             <div class="player">
-                <div>
-                    <div>Joueur 1</div>
+                <div>Joueur 1</div>
+                <div class="count">
                     <div><img alt="X" src="croix.png" height="80" width="80"/></div>
-                </div>
-                <div>
-                    <div class="count">0</div>
+                    <div>0</div>
                 </div>
             </div>
             <div class="player">
-                <div>
-                    <div>Joueur 2</div>
+                <div>Joueur 2</div>
+                <div class="count">
                     <div><img alt="O" src="buttonGreen.png" height="80" width="80"/></div>
-                </div>
-                <div>
-                    <div class="count">0</div>
+                    <div>0</div>
                 </div>
             </div>
         </div>
@@ -36,7 +32,7 @@
             </div>
         </div>
         <div id="ticTacToe">
-            <div id="popUp"></div>
+            <div id="popUp">Le joueur <span></span> à gagné !!!</div>
             <div class="case"></div>
             <div class="case"></div>
             <div class="case"></div>
@@ -49,7 +45,7 @@
         </div>
         <footer>
             <div id="restart">RESTART</div>
-            <div id="goOn">nouvelle manche</div>
+            <div id="goOn">Next round</div>
         </footer>
     </div>
     <script src="appTicTacToe.js"></script>
