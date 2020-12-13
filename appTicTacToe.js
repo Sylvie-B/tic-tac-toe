@@ -160,12 +160,5 @@ function diagonal (player){
     else return (gameBoard[6] === player && gameBoard[4] === player && gameBoard[2] === player);
 }
 
-
-
-
-
-
-
-
 // comment valider/jouer avec les touches du clavier ?
 // comment afficher l'icone joueur à la place de la souris ?
