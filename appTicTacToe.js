@@ -11,6 +11,7 @@ let info = document.getElementById("info");
 
 //      recup affichage de la
 let popUp = document.getElementById("popUp");
+let popUpN = document.getElementById("popUpN");
 
 //      recup de l'affichage
 let point = document.getElementById("point");
@@ -31,7 +32,7 @@ let turn = 0;  // commence à 0 ou 2
 
 let markUp = 0;
 
-let winner = false;    // ou placer ?
+let winner = false;
 
 for (let i = 0 ; i < board.length ; i++){        // pour chaque carré du plateau
     board[i].addEventListener("mouseup", function (event){        // si click
@@ -57,8 +58,7 @@ for (let i = 0 ; i < board.length ; i++){        // pour chaque carré du platea
         }
     isThereAWinner(event.button);   // en fonction de event.button === 0 || 2
     if(winner === false && markUp === 9){
-        popUp.innerHTML = "La partie est nulle";
-        popUp.style.visibility = "visible";
+        popUpN.style.visibility = "visible";
     }
     });
 }
@@ -73,6 +73,7 @@ document.getElementById("restart").addEventListener('click', function () {
     document.getElementById("count2").innerHTML = "0";
     count1 = count2 = 0;
     popUp.style.visibility = "hidden";
+    popUpN.style.visibility = "hidden";
     turn = playerX;
     winner = false;
     markUp = 0;
@@ -91,6 +92,7 @@ document.getElementById("goOn").addEventListener('click', function (){
     }
     gameBoard = ["", "", "", "", "", "", "", "", ""];
     popUp.style.visibility = "hidden";
+    popUpN.style.visibility = "hidden";
     winner = false;
     markUp = 0;
 })
