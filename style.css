@@ -14,20 +14,17 @@ body {
     width: 100%;
 }
 
-div, header, footer {
+div, footer {
     margin: 0.5vh auto;
 }
 
-#container{
-    width: 50%;
-}
-
-header, #player, #round, #ticTacToe, #title, footer{
+#playerFrame, #round, #ticTacToe, #title, footer{
     width: 70%;
     text-align: center;
 }
 
 #container{
+    width: 50%;
     padding: 2vw;
     background-image: url("fond-sakura.jpg");
     background-size: cover;
@@ -38,22 +35,34 @@ header, #player, #round, #ticTacToe, #title, footer{
     font-weight: bold;
 }
 
-#player, #round, #restart {
+#playerFrame, #round {
     font-size: 2vw;
 }
 
-.compt{
+.player, footer div{
     width: 49%;
+    height: 100%;
     display: flex;
     justify-content: space-between;
+    align-items: end;
 }
 
-#title, #player div, #info, #restart{
+.player div img {
+    width: 80%;
+    height: auto;
+}
+
+.count {
+    font-size: 6vw;
+}
+
+#title, .player, #info, #restart, #goOn{
     background-color: #ff5252;
     border-radius: 5px;
+    border: 1px yellow solid;
 }
 
-#player{
+#playerFrame, footer{
     display: flex;
     justify-content: space-between;
 }
