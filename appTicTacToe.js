@@ -1,8 +1,3 @@
-//      surpprimer le comportement par défaut du clic droit
-document.addEventListener("contextmenu", function (event){
-    event.preventDefault();
-})
-
 //      récup du plateau de jeu visible : 9 cases de 0 à 8
 let board = document.getElementsByClassName("case");
 
@@ -35,28 +30,28 @@ let markUp = 0;
 let winner = false;
 
 for (let i = 0 ; i < board.length ; i++){        // pour chaque carré du plateau
-    board[i].addEventListener("mouseup", function (event){        // si click
-        switch (event.button){  //  ==> event.button = 0 ou 2
+    board[i].addEventListener('click', function (event){        // si click
+        switch (turn){  //  ==> 0 ou 2
             case 0:
-                if (turn === event.button && board[i].innerHTML.length === 0){   // si tour du joueur et si case vide
+                if (board[i].innerHTML.length === 0){   //  si case vide
                     board[i].innerHTML = "<img alt='X' src=\'croix.png\'>";     // écrire marque du joueur
-                    gameBoard[i] = event.button;            // maj tableau
+                    gameBoard[i] = turn;            // maj tableau
                     turn = playerO;     // changement de joueur
                     info.innerHTML = "Joueur 2";          // affiche joueur dans info
                     markUp ++;
                 }
                 break;
             case 2:
-                if (turn === event.button && board[i].innerHTML.length === 0){     //  si tour du joueur = 2
+                if (board[i].innerHTML.length === 0){
                     board[i].innerHTML = "<img alt='X' src=\'buttonGreen.png\'>";
-                    gameBoard[i] = event.button;
+                    gameBoard[i] = turn;
                     turn = playerX;
                     info.innerHTML = "Joueur 1";
                     markUp ++;
                 }
                 break;
         }
-    isThereAWinner(event.button);   // en fonction de event.button === 0 || 2
+    isThereAWinner(turn);   // en fonction de event.button === 0 || 2
     if(winner === false && markUp === 9){
         popUpN.style.visibility = "visible";
     }
