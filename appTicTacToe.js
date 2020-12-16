@@ -75,6 +75,7 @@ document.getElementById("restart").addEventListener('click', function () {
     popUp.style.visibility = "hidden";
     popUpN.style.visibility = "hidden";
     turn = playerX;
+    info.innerHTML = "Joueur 1";
     winner = false;
     markUp = 0;
 })
@@ -162,3 +163,4 @@ function diagonal (player){
 
 // comment valider/jouer avec les touches du clavier ?
 // comment afficher l'icone joueur à la place de la souris ?
+
