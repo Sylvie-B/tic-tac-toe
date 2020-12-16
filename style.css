@@ -102,3 +102,9 @@ footer div {
     width: 30%;
 }
 
+#intro {
+    padding: 4px;
+    background-color: white;
+    color: black;
+    font-size: 1vw;
+}
