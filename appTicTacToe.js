@@ -1,18 +1,22 @@
-//      récup du plateau de jeu visible : 9 cases de 0 à 8
+//      deable right click default action
+document.addEventListener("contextmenu", function (event){
+    event.preventDefault();
+})
+
+//      get the 9 box of the visible game board
 let board = document.getElementsByClassName("case");
 
-//      recup du bandeau info
+//      get "info" headband
 let info = document.getElementById("info");
 
-//      recup affichage de la
+//      get pop up element
 let popUp = document.getElementById("popUp");
-let popUpN = document.getElementById("popUpN");
 
-//      recup de l'affichage
-let point = document.getElementById("point");
+//      get the player
+let user = document.getElementById("user");
 
-//      ( plateau invisible ) tableau "gameBoard" de 9 cases
-// au cours du jeu les gameBoard[i] reçoivent les affectations "0" ou "2" === const player
+//      array of 9 cases game board
+//      in game the case receive the value 0 or 2 witch correspond to const player
 let gameBoard = ["", "", "", "", "", "", "", "", ""];
 
 const playerX = 0;
@@ -21,44 +25,43 @@ let count1 = 0;
 const playerO = 2;
 let count2 = 0;
 
-let turn = 0;  // commence à 0 ou 2
-// si plusieurs parties ==> incremente à 2 puis décrémente à 0 ou donne la main au perdant manche précédente ?
-// et affiche dans info
+let turn = 0;  // alternate between 0 and 2
 
 let markUp = 0;
 
 let winner = false;
 
-for (let i = 0 ; i < board.length ; i++){        // pour chaque carré du plateau
-    board[i].addEventListener('click', function (event){        // si click
-        switch (turn){  //  ==> 0 ou 2
-            case 0:
-                if (board[i].innerHTML.length === 0){   //  si case vide
-                    board[i].innerHTML = "<img alt='X' src=\'croix.png\'>";     // écrire marque du joueur
-                    gameBoard[i] = turn;            // maj tableau
-                    turn = playerO;     // changement de joueur
-                    info.innerHTML = "Joueur 2";          // affiche joueur dans info
+for (let i = 0 ; i < board.length ; i++){        // for each game board box
+    board[i].addEventListener("mouseup", function (event){
+        switch (event.button){
+            case 0:     // if player 1 turn
+                if (turn === event.button && board[i].innerHTML.length === 0){
+                    board[i].innerHTML = "<img alt='X' src=\'croix.png\'>";
+                    gameBoard[i] = event.button;
+                    turn = playerO;     // change to player 2
+                    info.innerHTML = "Joueur 2";
                     markUp ++;
                 }
                 break;
-            case 2:
-                if (board[i].innerHTML.length === 0){
+            case 2:     // if player 2 turn
+                if (turn === event.button && board[i].innerHTML.length === 0){
                     board[i].innerHTML = "<img alt='X' src=\'buttonGreen.png\'>";
-                    gameBoard[i] = turn;
+                    gameBoard[i] = event.button;
                     turn = playerX;
                     info.innerHTML = "Joueur 1";
                     markUp ++;
                 }
                 break;
         }
-    isThereAWinner(turn);   // en fonction de event.button === 0 || 2
-    if(winner === false && markUp === 9){
-        popUpN.style.visibility = "visible";
-    }
+        isThereAWinner(event.button);
+        if(winner === false && markUp === 9){
+            popUp.innerHTML = "La partie est nulle";
+            popUp.style.visibility = "visible";
+        }
     });
 }
 
-// listener sur RESTART
+// listen RESTART button
 document.getElementById("restart").addEventListener('click', function () {
     for (let square of board) {
         square.innerHTML = "";
@@ -68,14 +71,12 @@ document.getElementById("restart").addEventListener('click', function () {
     document.getElementById("count2").innerHTML = "0";
     count1 = count2 = 0;
     popUp.style.visibility = "hidden";
-    popUpN.style.visibility = "hidden";
     turn = playerX;
-    info.innerHTML = "Joueur 1";
     winner = false;
     markUp = 0;
 })
 
-// listener Next round
+// listen Next round
 document.getElementById("goOn").addEventListener('click', function (){
     if (turn === playerX){
         info.innerHTML = "Joueur 1";
@@ -88,47 +89,47 @@ document.getElementById("goOn").addEventListener('click', function (){
     }
     gameBoard = ["", "", "", "", "", "", "", "", ""];
     popUp.style.visibility = "hidden";
-    popUpN.style.visibility = "hidden";
     winner = false;
     markUp = 0;
 })
 
-// fonction gagnant
-function isThereAWinner (player) {  // player === 0 || 2
-    if(!winner){        // si winner différent de true
-        //  test horizontal
+
+function isThereAWinner (player) {      // current player
+    if(!winner){        // if there's no winner
+        //   horizontal row test
         winner = horizontal(player);
         if (!winner) {
             winner = vertical(player);
-            // test vertical
+            //  vertical row test
             if (!winner){
-                // test diagonale
+                //  diagonal row test
                 winner = diagonal(player);
             }
         }
     }
-    // si winner === true alors joueur en cours a gagné
-    if (winner){
+    if (winner){        // if there's a winner
         switch (player){
             case 0:
                 // afichage info, +1 au score, affichage count, affichage popUp
+                // display winner player in "info"
                 info.innerHTML = "joueur 1 a gagné !!!";
                 count1 ++;
                 document.getElementById("count1").innerHTML = count1.toString();
-                popUp.style.visibility = "visible";
-                point.innerHTML = "1";
+                popUp.style.visibility = "visible";     // display end game pop up
+                user.innerHTML = "1";
                 break;
             case 2 :
                 info.innerHTML = "joueur 2 a gagné !!!";
                 count2 ++;
                 document.getElementById("count2").innerHTML = count2.toString();
                 popUp.style.visibility = "visible";
-                point.innerHTML = "2";
+                user.innerHTML = "2";
                 break;
         }
     }
 }
 
+// test each line
 function horizontal (player){
     if (gameBoard[0] === player && gameBoard[1] === player && gameBoard[2] === player){
         return true;
@@ -139,6 +140,7 @@ function horizontal (player){
     else return gameBoard[6] === player && gameBoard[7] === player && gameBoard[8] === player;
 }
 
+// test each column
 function vertical (player){
     if (gameBoard[0] === player && gameBoard [3] === player && gameBoard[6] === player){
         return true;
@@ -149,13 +151,10 @@ function vertical (player){
     else return gameBoard[6] === player && gameBoard[7] === player && gameBoard[8] === player;
 }
 
+// test diagonals
 function diagonal (player){
     if (gameBoard[0] === player && gameBoard[4] === player && gameBoard[8] === player){
         return true;
     }
     else return (gameBoard[6] === player && gameBoard[4] === player && gameBoard[2] === player);
 }
-
-// comment valider/jouer avec les touches du clavier ?
-// comment afficher l'icone joueur à la place de la souris ?
-
